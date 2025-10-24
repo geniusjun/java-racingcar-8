@@ -1,9 +1,10 @@
 package racingcar.global;
 
 public class CustomArgumentException extends IllegalArgumentException {
+    private static final String PREFIX = "[ERROR] ";
 
     private CustomArgumentException(ErrorMessage message) {
-        super(message.getMessage());
+        super(PREFIX + message.getMessage());
     }
 
     public static CustomArgumentException from(ErrorMessage errorMessage) {
