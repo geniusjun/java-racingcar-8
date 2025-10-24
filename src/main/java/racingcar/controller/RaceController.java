@@ -11,6 +11,6 @@ public class RaceController {
     }
 
     public void start() {
-        outputView.start();
+        outputView.printStart();
     }
 }
