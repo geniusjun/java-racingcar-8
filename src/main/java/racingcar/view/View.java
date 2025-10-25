@@ -1,11 +1,17 @@
-package racingcar.console;
+package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.global.CustomArgumentException;
 import racingcar.global.constans.ErrorMessage;
+import racingcar.global.constans.MessageType;
 
-public class ConsoleReader {
-    public static String enterMessage() {
+public class View {
+
+    public void printlnMessage(MessageType messageType) {
+        System.out.println(messageType.getMessage());
+    }
+
+    public String enterMessage() {
         return Validator.validateBlank(Console.readLine());
     }
 
@@ -18,3 +24,5 @@ public class ConsoleReader {
         }
     }
 }
+
+

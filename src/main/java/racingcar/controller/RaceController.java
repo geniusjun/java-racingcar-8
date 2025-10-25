@@ -1,21 +1,19 @@
 package racingcar.controller;
 
 import racingcar.domain.Cars;
-import racingcar.view.InputView;
-import racingcar.view.OutputView;
+import racingcar.global.constans.MessageType;
+import racingcar.view.View;
 
 public class RaceController {
 
-    private final OutputView outputView;
-    private final InputView inputView;
+    private final View view;
 
-    public RaceController(OutputView outputView, InputView inputView) {
-        this.outputView = outputView;
-        this.inputView = inputView;
+    public RaceController(View view) {
+        this.view = view;
     }
 
     public void start() {
-        outputView.printStart();
-        Cars cars = Cars.from(inputView.requestLine());
+        view.printlnMessage(MessageType.START_MESSAGE);
+        Cars cars = Cars.from(view.enterMessage());
     }
 }
