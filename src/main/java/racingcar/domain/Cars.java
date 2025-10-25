@@ -30,6 +30,21 @@ public class Cars {
         }
     }
 
+    public List<String> getWinners() {
+        return cars.stream()
+                .filter(c -> c.getAdvance() == getMax())
+                .map(Car::getName)
+                .toList();
+    }
+
+    private int getMax() {
+        return cars.stream()
+                .mapToInt(Car::getAdvance)
+                .max()
+                .orElse(0);
+    }
+
+
     private static class Parser {
         public static List<Car> split(String input) {
             List<String> names = Arrays.stream(input.split(",")).toList();
