@@ -13,9 +13,10 @@ public class View {
     }
 
     public void printList(List<String> list) {
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println(list);
+        for (String string : list) {
+            System.out.println(string);
         }
+        System.out.println();
     }
 
     public String enterMessage() {
