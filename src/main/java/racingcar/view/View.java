@@ -21,12 +21,7 @@ public class View {
     }
 
     public void printWinner(List<String> list) {
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println(" " + list.get(i));
-            if (i != list.size() - 1) {
-                System.out.print(",");
-            }
-        }
+        System.out.println("최종 우승자: " + String.join(", ", list));
     }
 
     public String enterMessage() {
