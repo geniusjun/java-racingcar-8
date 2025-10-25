@@ -19,6 +19,7 @@ public class RaceController {
         int count = advanceCount();
         while (count-- > 0) {
             cars.tryAdvance();
+            view.printList(cars.advanceResults());
         }
 
     }
