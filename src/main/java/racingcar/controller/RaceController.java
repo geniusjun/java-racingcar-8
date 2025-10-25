@@ -18,6 +18,7 @@ public class RaceController {
         Cars cars = makeCars();
         int count = advanceCount();
         raceAndResult(count, cars);
+        winner();
 
     }
 
@@ -41,5 +42,9 @@ public class RaceController {
             cars.tryAdvance();
             view.printList(cars.advanceResults());
         }
+    }
+
+    private void winner() {
+        view.printMessage(MessageType.WINNER_MESSAGE);
     }
 }

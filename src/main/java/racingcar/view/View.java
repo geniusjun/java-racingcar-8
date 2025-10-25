@@ -12,6 +12,10 @@ public class View {
         System.out.println(messageType.getMessage());
     }
 
+    public void printMessage(MessageType messageType) {
+        System.out.print(messageType.getMessage());
+    }
+
     public void printList(List<String> list) {
         for (String string : list) {
             System.out.println(string);
