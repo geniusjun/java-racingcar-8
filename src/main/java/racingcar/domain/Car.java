@@ -13,7 +13,7 @@ public class Car {
     }
 
     public static Car from(String name) {
-        return new Car(name);
+        return new Car(Validator.validate(name));
     }
 
     private static class Validator {

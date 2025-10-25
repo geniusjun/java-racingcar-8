@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import racingcar.domain.Cars;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -15,6 +16,6 @@ public class RaceController {
 
     public void start() {
         outputView.printStart();
-        String message = inputView.requestLine(); // 임시
+        Cars cars = Cars.from(inputView.requestLine());
     }
 }
