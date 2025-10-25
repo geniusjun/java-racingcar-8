@@ -15,10 +15,7 @@ public class RaceController {
     }
 
     public void start() {
-        view.printlnMessage(MessageType.START_MESSAGE);
-        Cars cars = Cars.from(view.enterMessage());
-
-        view.printlnMessage(MessageType.ADVANCE_MESSAGE);
+        makeCars();
         int count = advanceCount();
         while (count-- > 0) {
 
@@ -26,7 +23,13 @@ public class RaceController {
 
     }
 
+    private void makeCars() {
+        view.printlnMessage(MessageType.START_MESSAGE);
+        Cars cars = Cars.from(view.enterMessage());
+    }
+
     private int advanceCount() {
+        view.printlnMessage(MessageType.ADVANCE_MESSAGE);
         try {
             return Integer.parseInt(view.enterMessage());
         } catch (NumberFormatException e) {
