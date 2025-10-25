@@ -19,12 +19,19 @@ public class Car {
     private static class Validator {
         public static String validate(String name) {
             validateBlankName(name);
+            validateNameLength(name);
             return name;
         }
 
         private static void validateBlankName(String name) {
             if (name.isBlank()) {
                 throw CustomArgumentException.from(ErrorMessage.BLANK_INPUT_ERROR);
+            }
+        }
+
+        private static void validateNameLength(String name) {
+            if (name.length() > 5) {
+                throw CustomArgumentException.from(ErrorMessage.NAME_LENGTH_ERROR);
             }
         }
     }
