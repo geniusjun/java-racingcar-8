@@ -11,6 +11,6 @@ public class Cars {
     }
 
     public static Cars from(String input) {
-        new Cars(Arrays.asList(Car.from(input))); // 임시
+        return new Cars(Arrays.asList(Car.from(input))); // 임시
     }
 }
