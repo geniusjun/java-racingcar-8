@@ -16,6 +16,10 @@ public class Car {
         return new Car(Validator.validate(name));
     }
 
+    public void plusAdvance() {
+        this.advance++;
+    }
+
     private static class Validator {
         public static String validate(String name) {
             validateBlankName(name);
