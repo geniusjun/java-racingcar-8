@@ -40,8 +40,14 @@ public class RaceController {
         view.printlnMessage(MessageType.RESULT_MESSAGE);
         while (count-- > 0) {
             cars.tryAdvance();
-            view.printList(cars.advanceResults());
+            requestResult(cars);
         }
+    }
+
+    private void requestResult(Cars cars) {
+        cars.stream()
+                .forEach(car -> view.printResult(car.getName(), car.getAdvance()));
+        view.printlnMessage(MessageType.EMPTY_MESSAGE);
     }
 
     private void winner() {

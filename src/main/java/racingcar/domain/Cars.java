@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class Cars {
     private final List<Car> cars;
@@ -14,6 +15,10 @@ public class Cars {
 
     public static Cars from(String input) {
         return new Cars(Parser.split(input));
+    }
+
+    public Stream<Car> stream() {
+        return cars.stream();
     }
 
     public void tryAdvance() {

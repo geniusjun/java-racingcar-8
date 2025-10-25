@@ -16,13 +16,16 @@ public class Car {
         return new Car(Validator.validate(name));
     }
 
-    public void plusAdvance() {
-        this.advance++;
+    public String getName() {
+        return this.name;
     }
 
-    @Override
-    public String toString() {
-        return name + " : " + ("-").repeat(advance);
+    public int getAdvance() {
+        return this.advance;
+    }
+
+    public void plusAdvance() {
+        this.advance++;
     }
 
     private static class Validator {

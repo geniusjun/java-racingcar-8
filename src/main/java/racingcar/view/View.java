@@ -1,7 +1,6 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.List;
 import racingcar.global.CustomArgumentException;
 import racingcar.global.constans.ErrorMessage;
 import racingcar.global.constans.MessageType;
@@ -16,11 +15,8 @@ public class View {
         System.out.print(messageType.getMessage());
     }
 
-    public void printList(List<String> list) {
-        for (String string : list) {
-            System.out.println(string);
-        }
-        System.out.println();
+    public void printResult(String name, int advance) {
+        System.out.println(name + " : " + "-".repeat(advance));
     }
 
     public String enterMessage() {
