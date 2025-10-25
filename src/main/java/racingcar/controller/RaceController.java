@@ -15,7 +15,7 @@ public class RaceController {
     }
 
     public void start() {
-        makeCars();
+        Cars cars = makeCars();
         int count = advanceCount();
         while (count-- > 0) {
 
@@ -23,9 +23,9 @@ public class RaceController {
 
     }
 
-    private void makeCars() {
+    private Cars makeCars() {
         view.printlnMessage(MessageType.START_MESSAGE);
-        Cars cars = Cars.from(view.enterMessage());
+        return Cars.from(view.enterMessage());
     }
 
     private int advanceCount() {
