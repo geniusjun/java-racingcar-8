@@ -15,5 +15,7 @@ public class RaceController {
     public void start() {
         view.printlnMessage(MessageType.START_MESSAGE);
         Cars cars = Cars.from(view.enterMessage());
+
+        view.printlnMessage(MessageType.ADVANCE_MESSAGE);
     }
 }
