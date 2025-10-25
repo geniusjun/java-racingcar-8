@@ -18,7 +18,7 @@ public class RaceController {
         Cars cars = makeCars();
         int count = getCount();
         raceAndResult(count, cars);
-        winner();
+        requestWinner(cars);
 
     }
 
@@ -50,7 +50,8 @@ public class RaceController {
         view.printlnMessage(MessageType.EMPTY_MESSAGE);
     }
 
-    private void winner() {
+    private void requestWinner(Cars cars) {
         view.printMessage(MessageType.WINNER_MESSAGE);
+        view.printWinner(cars.getWinners());
     }
 }
