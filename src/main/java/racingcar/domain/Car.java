@@ -20,6 +20,11 @@ public class Car {
         this.advance++;
     }
 
+    @Override
+    public String toString() {
+        return name + " : " + ("-").repeat(advance);
+    }
+
     private static class Validator {
         public static String validate(String name) {
             validateBlankName(name);
