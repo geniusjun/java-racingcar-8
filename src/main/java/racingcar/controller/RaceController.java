@@ -16,7 +16,7 @@ public class RaceController {
 
     public void start() {
         Cars cars = makeCars();
-        int count = advanceCount();
+        int count = getCount();
         raceAndResult(count, cars);
         winner();
 
@@ -27,7 +27,7 @@ public class RaceController {
         return Cars.from(view.enterMessage());
     }
 
-    private int advanceCount() {
+    private int getCount() {
         view.printlnMessage(MessageType.ADVANCE_MESSAGE);
         try {
             return Integer.parseInt(view.enterMessage());

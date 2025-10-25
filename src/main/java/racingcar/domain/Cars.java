@@ -30,14 +30,6 @@ public class Cars {
         }
     }
 
-    public List<String> advanceResults() {
-        List<String> results = new ArrayList<>();
-        for (Car car : cars) {
-            results.add(car.toString());
-        }
-        return results;
-    }
-
     private static class Parser {
         public static List<Car> split(String input) {
             List<String> names = Arrays.stream(input.split(",")).toList();
