@@ -17,11 +17,7 @@ public class RaceController {
     public void start() {
         Cars cars = makeCars();
         int count = advanceCount();
-        view.printlnMessage(MessageType.RESULT_MESSAGE);
-        while (count-- > 0) {
-            cars.tryAdvance();
-            view.printList(cars.advanceResults());
-        }
+        raceAndResult(count, cars);
 
     }
 
@@ -36,6 +32,14 @@ public class RaceController {
             return Integer.parseInt(view.enterMessage());
         } catch (NumberFormatException e) {
             throw CustomArgumentException.from(ErrorMessage.SYSTEM_ERROR);
+        }
+    }
+
+    private void raceAndResult(int count, Cars cars) {
+        view.printlnMessage(MessageType.RESULT_MESSAGE);
+        while (count-- > 0) {
+            cars.tryAdvance();
+            view.printList(cars.advanceResults());
         }
     }
 }
