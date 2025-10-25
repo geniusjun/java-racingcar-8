@@ -2,7 +2,7 @@ package racingcar.console;
 
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.global.CustomArgumentException;
-import racingcar.global.ErrorMessage;
+import racingcar.global.constans.ErrorMessage;
 
 public class ConsoleReader {
     public static String enterMessage() {
