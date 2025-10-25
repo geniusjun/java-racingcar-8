@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -13,6 +14,15 @@ public class Cars {
 
     public static Cars from(String input) {
         return new Cars(Parser.split(input));
+    }
+
+    public void tryAdvance() {
+        for (Car car : cars) {
+            int randomNumber = Randoms.pickNumberInRange(0, 9);
+            if (randomNumber >= 4) {
+                car.plusAdvance();
+            }
+        }
     }
 
     private static class Parser {

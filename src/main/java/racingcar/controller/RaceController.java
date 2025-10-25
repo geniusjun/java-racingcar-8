@@ -18,7 +18,7 @@ public class RaceController {
         Cars cars = makeCars();
         int count = advanceCount();
         while (count-- > 0) {
-
+            cars.tryAdvance();
         }
 
     }
