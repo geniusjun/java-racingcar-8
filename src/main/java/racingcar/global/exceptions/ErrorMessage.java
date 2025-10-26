@@ -1,4 +1,4 @@
-package racingcar.global.constans;
+package racingcar.global.exceptions;
 
 public enum ErrorMessage {
     BLANK_INPUT_ERROR("빈 문자열이 입력되었습니다."),
@@ -9,7 +9,7 @@ public enum ErrorMessage {
     NUMBER_FORMAT_ERROR("전진 시도할 횟수는 숫자만 입력 가능합니다."),
     COUNT_RANGE_ERROR("전진 시도할 횟수는 양수만 입력 가능합니다."),
     ;
-    
+
     private final String message;
 
     ErrorMessage(String message) {

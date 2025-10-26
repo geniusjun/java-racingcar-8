@@ -1,6 +1,4 @@
-package racingcar.global;
-
-import racingcar.global.constans.ErrorMessage;
+package racingcar.global.exceptions;
 
 public class CustomArgumentException extends IllegalArgumentException {
     private static final String PREFIX = "[ERROR] ";

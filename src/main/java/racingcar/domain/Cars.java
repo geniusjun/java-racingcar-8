@@ -4,8 +4,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
-import racingcar.global.CustomArgumentException;
-import racingcar.global.constans.ErrorMessage;
+import racingcar.global.exceptions.CustomArgumentException;
+import racingcar.global.exceptions.ErrorMessage;
 
 public class Cars {
     private final List<Car> cars;

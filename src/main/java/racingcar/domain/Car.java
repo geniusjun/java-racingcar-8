@@ -1,7 +1,7 @@
 package racingcar.domain;
 
-import racingcar.global.CustomArgumentException;
-import racingcar.global.constans.ErrorMessage;
+import racingcar.global.exceptions.CustomArgumentException;
+import racingcar.global.exceptions.ErrorMessage;
 
 public class Car {
     private final String name;

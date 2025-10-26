@@ -1,8 +1,8 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import racingcar.global.CustomArgumentException;
-import racingcar.global.constans.ErrorMessage;
+import racingcar.global.exceptions.CustomArgumentException;
+import racingcar.global.exceptions.ErrorMessage;
 
 public class InputView {
 
