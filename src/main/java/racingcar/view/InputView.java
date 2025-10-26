@@ -1,28 +1,10 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.List;
 import racingcar.global.CustomArgumentException;
 import racingcar.global.constans.ErrorMessage;
-import racingcar.global.constans.MessageType;
 
-public class View {
-
-    public void printlnMessage(MessageType messageType) {
-        System.out.println(messageType.getMessage());
-    }
-
-    public void printMessage(MessageType messageType) {
-        System.out.print(messageType.getMessage());
-    }
-
-    public void printResult(String name, int advance) {
-        System.out.println(name + " : " + "-".repeat(advance));
-    }
-
-    public void printWinner(List<String> list) {
-        System.out.println(String.join(", ", list));
-    }
+public class InputView {
 
     public String enterMessage() {
         return Validator.validateName(Console.readLine());
@@ -65,5 +47,3 @@ public class View {
         }
     }
 }
-
-

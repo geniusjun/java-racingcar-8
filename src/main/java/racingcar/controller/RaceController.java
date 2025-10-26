@@ -2,14 +2,17 @@ package racingcar.controller;
 
 import racingcar.domain.Cars;
 import racingcar.global.constans.MessageType;
-import racingcar.view.View;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class RaceController {
 
-    private final View view;
+    private final OutputView outputView;
+    private final InputView inputView;
 
-    public RaceController(View view) {
-        this.view = view;
+    public RaceController(OutputView outputView, InputView inputView) {
+        this.outputView = outputView;
+        this.inputView = inputView;
     }
 
     public void start() {
@@ -21,17 +24,17 @@ public class RaceController {
     }
 
     private Cars createCars() {
-        view.printlnMessage(MessageType.START_MESSAGE);
-        return Cars.from(view.enterMessage());
+        outputView.printlnMessage(MessageType.START_MESSAGE);
+        return Cars.from(inputView.enterMessage());
     }
 
     private int getCount() {
-        view.printlnMessage(MessageType.ADVANCE_MESSAGE);
-        return view.enterCount();
+        outputView.printlnMessage(MessageType.ADVANCE_MESSAGE);
+        return inputView.enterCount();
     }
 
     private void raceAndResult(int count, Cars cars) {
-        view.printlnMessage(MessageType.RESULT_MESSAGE);
+        outputView.printlnMessage(MessageType.RESULT_MESSAGE);
         while (count-- > 0) {
             cars.tryAdvance();
             requestResult(cars);
@@ -40,12 +43,12 @@ public class RaceController {
 
     private void requestResult(Cars cars) {
         cars.stream()
-                .forEach(car -> view.printResult(car.getName(), car.getAdvance()));
-        view.printlnMessage(MessageType.EMPTY_MESSAGE);
+                .forEach(car -> outputView.printResult(car.getName(), car.getAdvance()));
+        outputView.printlnMessage(MessageType.EMPTY_MESSAGE);
     }
 
     private void requestWinner(Cars cars) {
-        view.printMessage(MessageType.WINNER_MESSAGE);
-        view.printWinner(cars.getWinners());
+        outputView.printMessage(MessageType.WINNER_MESSAGE);
+        outputView.printWinner(cars.getWinners());
     }
 }

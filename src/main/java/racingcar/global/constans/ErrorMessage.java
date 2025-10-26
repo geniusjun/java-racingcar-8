@@ -8,8 +8,8 @@ public enum ErrorMessage {
     CAR_SIZE_ERROR("자동차는 최소 2대 이상이여야 경주가 가능합니다."),
     NUMBER_FORMAT_ERROR("전진 시도할 횟수는 숫자만 입력 가능합니다."),
     COUNT_RANGE_ERROR("전진 시도할 횟수는 양수만 입력 가능합니다."),
-    SYSTEM_ERROR("알 수 없는 오류입니다."),
     ;
+    
     private final String message;
 
     ErrorMessage(String message) {
