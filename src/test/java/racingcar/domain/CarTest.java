@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
+import static racingcar.global.constans.NumberType.NAME_MAX_LENGTH;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -40,5 +41,17 @@ class CarTest {
         assertThatThrownBy(() -> Car.from(empty))
                 .isInstanceOf(CustomArgumentException.class)
                 .hasMessageContaining(ErrorMessage.BLANK_INPUT_ERROR.getMessage());
+    }
+
+    @Test
+    @DisplayName("이름 길이가 최대 길이를 초과하면 예외를 던진다")
+    void createWithTooLongName_throwsException() {
+        // given
+        String over = "a".repeat(NAME_MAX_LENGTH.getValue() + 1);
+
+        // when // then
+        assertThatThrownBy(() -> Car.from(over))
+                .isInstanceOf(CustomArgumentException.class)
+                .hasMessageContaining(ErrorMessage.NAME_LENGTH_ERROR.getMessage());
     }
 }
