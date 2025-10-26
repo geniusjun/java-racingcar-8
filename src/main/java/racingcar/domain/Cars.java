@@ -3,7 +3,6 @@ package racingcar.domain;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import racingcar.global.CustomArgumentException;
 import racingcar.global.constans.ErrorMessage;
@@ -72,16 +71,18 @@ public class Cars {
         }
 
         private static boolean hasDuplicateNames(List<Car> cars) {
-            Integer uniqueSize = countUniqueCarNames(cars);
+            int uniqueSize = countUniqueCarNames(cars);
             return uniqueSize != cars.size();
         }
 
-        private static Integer countUniqueCarNames(List<Car> cars) {
-            return cars.stream()
+        private static int countUniqueCarNames(List<Car> cars) {
+            return (int) cars.stream()
                     .map(Car::getName)
-                    .collect(Collectors.toSet())
-                    .size();
+                    .distinct()
+                    .count();
         }
 
     }
+
 }
+
