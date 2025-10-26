@@ -29,16 +29,17 @@ public class View {
     }
 
     public int enterCount() {
-        try {
-            return Integer.parseInt(Console.readLine());
-        } catch (NumberFormatException e) {
-            throw CustomArgumentException.from(ErrorMessage.SYSTEM_ERROR);
-        }
+        return Integer.parseInt(Validator.validateCount(Console.readLine()));
     }
 
     private static class Validator {
 
         public static String validateName(String message) {
+            validateBlank(message);
+            return message;
+        }
+
+        public static String validateCount(String message) {
             validateBlank(message);
             return message;
         }
