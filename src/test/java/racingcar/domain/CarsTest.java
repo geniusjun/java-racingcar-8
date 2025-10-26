@@ -1,10 +1,13 @@
 package racingcar.domain;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.global.exceptions.CustomArgumentException;
+import racingcar.global.exceptions.ErrorMessage;
 
 @DisplayName("Cars 도메인 테스트")
 class CarsTest {
@@ -23,5 +26,17 @@ class CarsTest {
         // then
         assertThat(carList)
                 .containsExactly("pobi", "woni", "jun");
+    }
+
+    @Test
+    @DisplayName("차량 수가 최소 개수 미만이면 예외를 던진다. 1대라면 경주의 의미가 희미해진다.")
+    void LessThanMinCars_throwsException() {
+        // given
+        String input = "pobi"; // 1대 → 최소(2) 미만
+
+        // when // then
+        assertThatThrownBy(() -> Cars.from(input))
+                .isInstanceOf(CustomArgumentException.class)
+                .hasMessageContaining(ErrorMessage.CAR_SIZE_ERROR.getMessage());
     }
 }
