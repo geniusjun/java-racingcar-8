@@ -100,7 +100,7 @@ class CarsTest {
         advanceNTimes(carByName(cars, "b"), 1); // b는 1칸 전진
 
         // when
-        var winners = cars.getWinners();
+        List<String> winners = cars.getWinners();
 
         // then
         assertThat(winners).containsExactly("a");
