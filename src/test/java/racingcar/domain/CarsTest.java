@@ -106,6 +106,21 @@ class CarsTest {
         assertThat(winners).containsExactly("a");
     }
 
+    @Test
+    @DisplayName("getWinners: 복수 우승자 이름을 반환한다(수동 전진)")
+    void getWinners_returnsMultipleWinner_withManualAdvances() {
+        // given
+        Cars cars = Cars.from("a,b,c");
+        advanceNTimes(carByName(cars, "a"), 2); // a 2칸 전진
+        advanceNTimes(carByName(cars, "b"), 2); // b 2칸 전진
+
+        // when
+        List<String> winners = cars.getWinners();
+
+        // then
+        assertThat(winners).containsExactly("a", "b");
+    }
+
     // 테스트 헬퍼 메서드
     private static Car carByName(Cars cars, String name) {
         return cars.stream()
