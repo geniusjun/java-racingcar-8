@@ -54,8 +54,15 @@ public class Cars {
 
     private static class Validator {
         public static List<Car> validate(List<Car> cars) {
+            validateSize(cars);
             validateDuplicateNames(cars);
             return cars;
+        }
+
+        private static void validateSize(List<Car> cars) {
+            if (cars.size() < 2) {
+                throw CustomArgumentException.from(ErrorMessage.CAR_SIZE_ERROR);
+            }
         }
 
         private static void validateDuplicateNames(List<Car> cars) {
@@ -75,5 +82,6 @@ public class Cars {
                     .collect(Collectors.toSet())
                     .size();
         }
+
     }
 }
