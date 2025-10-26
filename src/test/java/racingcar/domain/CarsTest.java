@@ -67,4 +67,27 @@ class CarsTest {
         assertThat(cars.stream().map(Car::getAdvance).toList())
                 .allSatisfy(a -> assertThat(a).isIn(0, step));
     }
+
+    @Test
+    @DisplayName("tryAdvance: 여러 턴 후 각 차의 전진값은 ADVANCE_SIZE의 배수이며 0~(턴*ADVANCE_SIZE) 범위이다")
+    void tryAdvance_multiTurn_advancesAreMultipleAndWithinRange() {
+        // given
+        Cars cars = Cars.from("a,b,c");
+        int turns = 5;
+        int step = ADVANCE_SIZE.getValue();
+
+        // when
+        for (int i = 0; i < turns; i++) {
+            cars.tryAdvance();
+        }
+
+        // then
+        int maxPossible = turns * step;
+        cars.stream()
+                .forEach(car -> {
+                    int a = car.getAdvance();
+                    assertThat(a % step).isZero();
+                    assertThat(a).isBetween(0, maxPossible);
+                });
+    }
 }
