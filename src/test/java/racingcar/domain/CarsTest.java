@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
+import static racingcar.global.constans.NumberType.ADVANCE_SIZE;
 
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -50,5 +51,20 @@ class CarsTest {
         assertThatThrownBy(() -> Cars.from(input))
                 .isInstanceOf(CustomArgumentException.class)
                 .hasMessageContaining(ErrorMessage.NAME_DUPLICATE_ERROR.getMessage());
+    }
+
+    @Test
+    @DisplayName("tryAdvance: 1턴 후 각 차의 전진값은 {0, ADVANCE_SIZE} 중 하나이다")
+    void tryAdvance_oneTurn_eachAdvanceIsZeroOrStep() {
+        // given
+        Cars cars = Cars.from("a,b,c");
+
+        // when
+        cars.tryAdvance();
+
+        // then
+        int step = ADVANCE_SIZE.getValue();
+        assertThat(cars.stream().map(Car::getAdvance).toList())
+                .allSatisfy(a -> assertThat(a).isIn(0, step));
     }
 }
