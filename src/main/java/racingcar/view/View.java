@@ -42,6 +42,7 @@ public class View {
         public static String validateCount(String message) {
             validateBlank(message);
             validateNumberFormat(message);
+            validateCountRange(message);
             return message;
         }
 
@@ -54,6 +55,12 @@ public class View {
         private static void validateNumberFormat(String message) {
             if (!message.matches("\\d+")) {
                 throw CustomArgumentException.from(ErrorMessage.NUMBER_FORMAT_ERROR);
+            }
+        }
+
+        private static void validateCountRange(String message) {
+            if (Integer.parseInt(message) <= 0) {
+                throw CustomArgumentException.from(ErrorMessage.COUNT_RANGE_ERROR);
             }
         }
     }
