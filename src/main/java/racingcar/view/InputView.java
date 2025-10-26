@@ -18,6 +18,8 @@ public class InputView {
 
     private static class Validator {
 
+        private static final String NUMBER_FORMAT = "\\d+";
+
         public static String validateName(String message) {
             validateBlank(message);
             return message;
@@ -37,7 +39,7 @@ public class InputView {
         }
 
         private static void validateNumberFormat(String message) {
-            if (!message.matches("\\d+")) {
+            if (!message.matches(NUMBER_FORMAT)) {
                 throw CustomArgumentException.from(ErrorMessage.NUMBER_FORMAT_ERROR);
             }
         }
