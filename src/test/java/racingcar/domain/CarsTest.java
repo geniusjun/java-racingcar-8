@@ -90,4 +90,34 @@ class CarsTest {
                     assertThat(a).isBetween(0, maxPossible);
                 });
     }
+
+    @Test
+    @DisplayName("getWinners: 단일 우승자 이름을 반환한다(수동 전진)")
+    void getWinners_returnsSingleWinner_withManualAdvances() {
+        // given
+        Cars cars = Cars.from("a,b,c");
+        advanceNTimes(carByName(cars, "a"), 2); // a는 2칸 전진
+        advanceNTimes(carByName(cars, "b"), 1); // b는 1칸 전진
+
+        // when
+        var winners = cars.getWinners();
+
+        // then
+        assertThat(winners).containsExactly("a");
+    }
+
+    // 테스트 헬퍼 메서드
+    private static Car carByName(Cars cars, String name) {
+        return cars.stream()
+                .filter(c
+                        -> c.getName()
+                        .equals(name)).findFirst().orElseThrow();
+    }
+
+    // 테스트 헬퍼 메서드
+    private static void advanceNTimes(Car car, int times) {
+        for (int i = 0; i < times; i++) {
+            car.plusAdvance();
+        }
+    }
 }
