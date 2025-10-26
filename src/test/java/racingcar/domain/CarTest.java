@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
+import static racingcar.global.constans.NumberType.ADVANCE_SIZE;
 import static racingcar.global.constans.NumberType.NAME_MAX_LENGTH;
 
 import org.junit.jupiter.api.DisplayName;
@@ -53,5 +54,22 @@ class CarTest {
         assertThatThrownBy(() -> Car.from(over))
                 .isInstanceOf(CustomArgumentException.class)
                 .hasMessageContaining(ErrorMessage.NAME_LENGTH_ERROR.getMessage());
+    }
+
+    @Test
+    @DisplayName("plusAdvance() 호출 시 ADVANCE_SIZE만큼 전진한다")
+    void plusAdvance_increaseByAdvanceSize() {
+        // given
+        Car car = Car.from("pobi");
+
+        // when
+        car.plusAdvance();
+        int afterOne = car.getAdvance();
+        car.plusAdvance();
+        int afterTwo = car.getAdvance();
+
+        // then
+        assertThat(afterOne).isEqualTo(ADVANCE_SIZE.getValue());
+        assertThat(afterTwo).isEqualTo(ADVANCE_SIZE.getValue() * 2);
     }
 }
