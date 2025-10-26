@@ -1,5 +1,7 @@
 package racingcar.view;
 
+import static racingcar.global.constans.NumberType.ZERO;
+
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.global.exceptions.CustomArgumentException;
 import racingcar.global.exceptions.ErrorMessage;
@@ -41,7 +43,7 @@ public class InputView {
         }
 
         private static void validateCountRange(String message) {
-            if (Integer.parseInt(message) <= 0) {
+            if (Integer.parseInt(message) <= ZERO.getValue()) {
                 throw CustomArgumentException.from(ErrorMessage.COUNT_RANGE_ERROR);
             }
         }

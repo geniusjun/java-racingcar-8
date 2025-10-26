@@ -1,5 +1,12 @@
 package racingcar.domain;
 
+import static racingcar.global.constans.NumberType.MAX_RANDOM_NUMBER;
+import static racingcar.global.constans.NumberType.MINUS_ONE;
+import static racingcar.global.constans.NumberType.MIN_CAR_SIZE;
+import static racingcar.global.constans.NumberType.MIN_FORWARD_FLAG;
+import static racingcar.global.constans.NumberType.MIN_RANDOM_NUMBER;
+import static racingcar.global.constans.NumberType.ZERO;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
 import java.util.List;
@@ -24,8 +31,8 @@ public class Cars {
 
     public void tryAdvance() {
         for (Car car : cars) {
-            int randomNumber = Randoms.pickNumberInRange(0, 9);
-            if (randomNumber >= 4) {
+            int randomNumber = Randoms.pickNumberInRange(MIN_RANDOM_NUMBER.getValue(), MAX_RANDOM_NUMBER.getValue());
+            if (randomNumber >= MIN_FORWARD_FLAG.getValue()) {
                 car.plusAdvance();
             }
         }
@@ -42,11 +49,11 @@ public class Cars {
         return cars.stream()
                 .mapToInt(Car::getAdvance)
                 .max()
-                .orElse(0);
+                .orElse(ZERO.getValue());
     }
 
     private static List<Car> parseCars(String input) {
-        return Arrays.stream(input.split(",", -1))
+        return Arrays.stream(input.split(",", MINUS_ONE.getValue()))
                 .map(Car::from)
                 .toList();
     }
@@ -59,7 +66,7 @@ public class Cars {
         }
 
         private static void validateSize(List<Car> cars) {
-            if (cars.size() < 2) {
+            if (cars.size() < MIN_CAR_SIZE.getValue()) {
                 throw CustomArgumentException.from(ErrorMessage.CAR_SIZE_ERROR);
             }
         }

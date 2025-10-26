@@ -1,5 +1,8 @@
 package racingcar.domain;
 
+import static racingcar.global.constans.NumberType.ADVANCE_SIZE;
+import static racingcar.global.constans.NumberType.NAME_MAX_LENGTH;
+
 import racingcar.global.exceptions.CustomArgumentException;
 import racingcar.global.exceptions.ErrorMessage;
 
@@ -25,7 +28,7 @@ public class Car {
     }
 
     public void plusAdvance() {
-        this.advance++;
+        advance += ADVANCE_SIZE.getValue();
     }
 
     private static class Validator {
@@ -42,7 +45,7 @@ public class Car {
         }
 
         private static void validateNameLength(String name) {
-            if (name.length() > 5) {
+            if (name.length() > NAME_MAX_LENGTH.getValue()) {
                 throw CustomArgumentException.from(ErrorMessage.NAME_LENGTH_ERROR);
             }
         }
