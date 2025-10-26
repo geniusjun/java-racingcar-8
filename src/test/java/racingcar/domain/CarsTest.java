@@ -42,7 +42,7 @@ class CarsTest {
 
     @Test
     @DisplayName("이름이 중복되면 예외를 던진다")
-    void from_withDuplicateNames_throwsException() {
+    void withDuplicateNames_throwsException() {
         // given
         String input = "pobi,pobi";
 
