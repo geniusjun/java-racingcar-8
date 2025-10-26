@@ -41,12 +41,19 @@ public class View {
 
         public static String validateCount(String message) {
             validateBlank(message);
+            validateNumberFormat(message);
             return message;
         }
 
         private static void validateBlank(String message) {
             if (message.isBlank()) {
                 throw CustomArgumentException.from(ErrorMessage.BLANK_INPUT_ERROR);
+            }
+        }
+
+        private static void validateNumberFormat(String message) {
+            if (!message.matches("\\d+")) {
+                throw CustomArgumentException.from(ErrorMessage.NUMBER_FORMAT_ERROR);
             }
         }
     }
