@@ -1,9 +1,12 @@
 package racingcar.domain;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.global.exceptions.CustomArgumentException;
+import racingcar.global.exceptions.ErrorMessage;
 
 @DisplayName("Car 도메인 테스트")
 class CarTest {
@@ -22,4 +25,20 @@ class CarTest {
         assertThat(car.getAdvance()).isZero();
     }
 
+    @Test
+    @DisplayName("이름이 공백/빈 문자열이면 예외를 던진다")
+    void createWithBlankName_throwsException() {
+        // given
+        String blanks = "   ";
+        String empty = "";
+
+        // when // then
+        assertThatThrownBy(() -> Car.from(blanks))
+                .isInstanceOf(CustomArgumentException.class)
+                .hasMessageContaining(ErrorMessage.BLANK_INPUT_ERROR.getMessage());
+
+        assertThatThrownBy(() -> Car.from(empty))
+                .isInstanceOf(CustomArgumentException.class)
+                .hasMessageContaining(ErrorMessage.BLANK_INPUT_ERROR.getMessage());
+    }
 }
