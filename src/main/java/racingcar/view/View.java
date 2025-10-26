@@ -21,7 +21,7 @@ public class View {
     }
 
     public void printWinner(List<String> list) {
-        System.out.println("최종 우승자: " + String.join(", ", list));
+        System.out.println(String.join(", ", list));
     }
 
     public String enterMessage() {
