@@ -15,14 +15,14 @@ public class RaceController {
     }
 
     public void start() {
-        Cars cars = makeCars();
+        Cars cars = createCars();
         int count = getCount();
         raceAndResult(count, cars);
         requestWinner(cars);
 
     }
 
-    private Cars makeCars() {
+    private Cars createCars() {
         view.printlnMessage(MessageType.START_MESSAGE);
         return Cars.from(view.enterMessage());
     }
