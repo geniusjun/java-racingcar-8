@@ -1,7 +1,6 @@
 package racingcar.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
@@ -14,7 +13,7 @@ public class Cars {
     }
 
     public static Cars from(String input) {
-        return new Cars(Parser.split(input));
+        return new Cars(parseCars(input));
     }
 
     public Stream<Car> stream() {
@@ -44,19 +43,10 @@ public class Cars {
                 .orElse(0);
     }
 
-
-    private static class Parser {
-        public static List<Car> split(String input) {
-            List<String> names = Arrays.stream(input.split(",")).toList();
-            return makeCars(names);
-        }
-
-        private static List<Car> makeCars(List<String> names) {
-            List<Car> carList = new ArrayList<>();
-            for (String name : names) {
-                carList.add(Car.from(name));
-            }
-            return carList;
-        }
+    private static List<Car> parseCars(String input) {
+        return Arrays.stream(input.split(",", -1))
+                .map(Car::from)
+                .toList();
     }
+
 }
