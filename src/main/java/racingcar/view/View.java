@@ -25,7 +25,7 @@ public class View {
     }
 
     public String enterMessage() {
-        return Validator.validateBlank(Console.readLine());
+        return Validator.validateName(Console.readLine());
     }
 
     public int enterCount() {
@@ -37,11 +37,16 @@ public class View {
     }
 
     private static class Validator {
-        public static String validateBlank(String message) {
+
+        public static String validateName(String message) {
+            validateBlank(message);
+            return message;
+        }
+
+        private static void validateBlank(String message) {
             if (message.isBlank()) {
                 throw CustomArgumentException.from(ErrorMessage.BLANK_INPUT_ERROR);
             }
-            return message;
         }
     }
 }
