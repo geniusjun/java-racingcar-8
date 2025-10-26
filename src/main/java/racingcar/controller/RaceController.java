@@ -1,8 +1,6 @@
 package racingcar.controller;
 
 import racingcar.domain.Cars;
-import racingcar.global.CustomArgumentException;
-import racingcar.global.constans.ErrorMessage;
 import racingcar.global.constans.MessageType;
 import racingcar.view.View;
 
@@ -29,11 +27,7 @@ public class RaceController {
 
     private int getCount() {
         view.printlnMessage(MessageType.ADVANCE_MESSAGE);
-        try {
-            return Integer.parseInt(view.enterMessage());
-        } catch (NumberFormatException e) {
-            throw CustomArgumentException.from(ErrorMessage.SYSTEM_ERROR);
-        }
+        return view.enterCount();
     }
 
     private void raceAndResult(int count, Cars cars) {

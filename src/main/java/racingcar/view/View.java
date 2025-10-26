@@ -28,6 +28,14 @@ public class View {
         return Validator.validateBlank(Console.readLine());
     }
 
+    public int enterCount() {
+        try {
+            return Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException e) {
+            throw CustomArgumentException.from(ErrorMessage.SYSTEM_ERROR);
+        }
+    }
+
     private static class Validator {
         public static String validateBlank(String message) {
             if (message.isBlank()) {
