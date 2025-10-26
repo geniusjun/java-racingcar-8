@@ -39,4 +39,16 @@ class CarsTest {
                 .isInstanceOf(CustomArgumentException.class)
                 .hasMessageContaining(ErrorMessage.CAR_SIZE_ERROR.getMessage());
     }
+
+    @Test
+    @DisplayName("이름이 중복되면 예외를 던진다")
+    void from_withDuplicateNames_throwsException() {
+        // given
+        String input = "pobi,pobi";
+
+        // when // then
+        assertThatThrownBy(() -> Cars.from(input))
+                .isInstanceOf(CustomArgumentException.class)
+                .hasMessageContaining(ErrorMessage.NAME_DUPLICATE_ERROR.getMessage());
+    }
 }
