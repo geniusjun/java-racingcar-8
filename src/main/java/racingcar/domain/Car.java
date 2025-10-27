@@ -27,7 +27,7 @@ public class Car {
         return this.advance;
     }
 
-    public void plusAdvance() {
+    public void move() {
         advance += ADVANCE_SIZE.getValue();
     }
 

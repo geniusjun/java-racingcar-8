@@ -33,7 +33,7 @@ public class Cars {
         for (Car car : cars) {
             int randomNumber = Randoms.pickNumberInRange(MIN_RANDOM_NUMBER.getValue(), MAX_RANDOM_NUMBER.getValue());
             if (randomNumber >= MIN_FORWARD_FLAG.getValue()) {
-                car.plusAdvance();
+                car.move();
             }
         }
     }

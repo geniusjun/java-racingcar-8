@@ -63,9 +63,9 @@ class CarTest {
         Car car = Car.from("pobi");
 
         // when
-        car.plusAdvance();
+        car.move();
         int afterOne = car.getAdvance();
-        car.plusAdvance();
+        car.move();
         int afterTwo = car.getAdvance();
 
         // then

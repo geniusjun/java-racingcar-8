@@ -132,7 +132,7 @@ class CarsTest {
     // 테스트 헬퍼 메서드
     private static void advanceNTimes(Car car, int times) {
         for (int i = 0; i < times; i++) {
-            car.plusAdvance();
+            car.move();
         }
     }
 }
