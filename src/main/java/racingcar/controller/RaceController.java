@@ -20,7 +20,6 @@ public class RaceController {
         int count = getCount();
         raceAndResult(count, cars);
         requestWinner(cars);
-
     }
 
     private Cars createCars() {

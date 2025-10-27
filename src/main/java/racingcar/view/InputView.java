@@ -17,7 +17,7 @@ public class InputView {
     }
 
     private static class Validator {
-
+        // 부호를 포함하는 숫자 형식
         private static final String NUMBER_FORMAT = "^[+-]?\\d+$";
 
         public static String validateName(String message) {

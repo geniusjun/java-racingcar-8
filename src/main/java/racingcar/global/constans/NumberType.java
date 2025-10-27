@@ -9,6 +9,7 @@ public enum NumberType {
     MAX_RANDOM_NUMBER(9),
     ZERO(0),
     MINUS_ONE(-1);
+    
     private final Integer value;
 
     NumberType(Integer value) {
