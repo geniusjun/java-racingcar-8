@@ -18,7 +18,7 @@ public class InputView {
 
     private static class Validator {
 
-        private static final String NUMBER_FORMAT = "\\d+";
+        private static final String NUMBER_FORMAT = "^[+-]?\\d+$";
 
         public static String validateName(String message) {
             validateBlank(message);

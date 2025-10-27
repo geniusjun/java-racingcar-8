@@ -63,7 +63,6 @@ public class InputTest {
         assertEquals(5, actual);
     }
 
-
     @Test
     @DisplayName("이동 횟수: 숫자 형식이 아니면 예외")
     void enterCount_notNumber_throw() {
