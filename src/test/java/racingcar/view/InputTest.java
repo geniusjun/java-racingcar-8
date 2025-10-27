@@ -48,4 +48,18 @@ public class InputTest {
                 .isInstanceOf(CustomArgumentException.class)
                 .hasMessageContaining(ErrorMessage.BLANK_INPUT_ERROR.getMessage());
     }
+
+    @Test
+    @DisplayName("이동 횟수: 숫자면 정수로 파싱되어 반환된다")
+    void enterCount_ok() {
+        // given
+        setStdin("5\n");
+        InputView view = new InputView();
+
+        // when
+        int actual = view.enterCount();
+
+        // then
+        assertEquals(5, actual);
+    }
 }
