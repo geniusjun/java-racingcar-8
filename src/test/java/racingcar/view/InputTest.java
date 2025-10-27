@@ -4,9 +4,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.io.ByteArrayInputStream;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.global.exceptions.CustomArgumentException;
+import racingcar.global.exceptions.ErrorMessage;
 
 public class InputTest {
 
@@ -31,5 +34,18 @@ public class InputTest {
 
         // then
         assertEquals("pobi,woni", names);
+    }
+
+    @Test
+    @DisplayName("이름 입력: 빈 문자열이면 예외")
+    void enterMessage_blank_throw() {
+        // given
+        setStdin("\n");
+        InputView view = new InputView();
+
+        // when // then
+        Assertions.assertThatThrownBy(() -> view.enterMessage())
+                .isInstanceOf(CustomArgumentException.class)
+                .hasMessageContaining(ErrorMessage.BLANK_INPUT_ERROR.getMessage());
     }
 }
