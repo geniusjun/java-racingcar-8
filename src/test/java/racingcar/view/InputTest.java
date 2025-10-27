@@ -62,4 +62,18 @@ public class InputTest {
         // then
         assertEquals(5, actual);
     }
+
+
+    @Test
+    @DisplayName("이동 횟수: 숫자 형식이 아니면 예외")
+    void enterCount_notNumber_throw() {
+        // given
+        setStdin("5a\n");
+        InputView view = new InputView();
+
+        // when // then
+        Assertions.assertThatThrownBy(() -> view.enterCount())
+                .isInstanceOf(CustomArgumentException.class)
+                .hasMessageContaining(ErrorMessage.NUMBER_FORMAT_ERROR.getMessage());
+    }
 }
