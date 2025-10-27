@@ -75,4 +75,17 @@ public class InputTest {
                 .isInstanceOf(CustomArgumentException.class)
                 .hasMessageContaining(ErrorMessage.NUMBER_FORMAT_ERROR.getMessage());
     }
+
+    @Test
+    @DisplayName("이동 횟수: 0 이하면 예외")
+    void enterCount_nonPositive_throw() {
+        // given
+        setStdin("-1\n");
+        InputView view = new InputView();
+
+        // when // then
+        Assertions.assertThatThrownBy(() -> view.enterCount())
+                .isInstanceOf(CustomArgumentException.class)
+                .hasMessageContaining(ErrorMessage.COUNT_RANGE_ERROR.getMessage());
+    }
 }
