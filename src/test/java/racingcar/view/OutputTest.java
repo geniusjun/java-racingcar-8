@@ -31,4 +31,17 @@ public class OutputTest {
         // then
         assertEquals("pobi : ---", formatted);
     }
+
+    @Test
+    @DisplayName("우승자 포맷: 쉼표+공백으로 연결")
+    void winnersFormat_basic() {
+        // given
+        List<String> winners = List.of("pobi", "woni", "jun");
+
+        // when
+        String formatted = formatWinners(winners);
+
+        // then
+        assertEquals("pobi, woni, jun", formatted);
+    }
 }
