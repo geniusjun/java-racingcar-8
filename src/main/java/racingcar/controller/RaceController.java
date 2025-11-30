@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.domain.Car;
@@ -22,8 +23,10 @@ public class RaceController {
         Cars cars = makeCars(inputView.readLine());
         outputView.printAdvance();
         int attempt = inputView.readAdvance();
+        outputView.printResult();
         while (attempt-- > 0) {
-
+            advanceCars(cars);
+            showResult(cars);
         }
     }
 
@@ -34,6 +37,22 @@ public class RaceController {
             cars.add(Car.from(names[i]));
         }
         return Cars.from(cars);
+    }
+
+    private void advanceCars(Cars cars) {
+        for (int i = 0; i < cars.getCars().size(); i++) {
+            int ranNum = Randoms.pickNumberInRange(0, 9);
+            if (ranNum >= 4) {
+                cars.getCars().get(i).plusAdvance();
+            }
+        }
+    }
+
+    private void showResult(Cars cars) {
+        for (int i = 0; i < cars.getCars().size(); i++) {
+            outputView.printEachCarResult(cars.getCars().get(i).getName(), cars.getCars().get(i).getAdvance());
+        }
+        outputView.printEnter();
     }
 
 }

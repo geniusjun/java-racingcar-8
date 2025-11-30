@@ -20,6 +20,14 @@ public class Car {
         return name;
     }
 
+    public int getAdvance() {
+        return advance;
+    }
+
+    public void plusAdvance() {
+        this.advance++;
+    }
+
     private static void validateName(String name) {
         if (name.length() > 5) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_NAME_LENGTH.getMessage());

@@ -9,4 +9,18 @@ public class OutputView {
     public void printAdvance() {
         System.out.println("시도할 회수는 몇회인가요?");
     }
+
+    public void printResult() {
+        System.out.println("실행 결과");
+    }
+
+    public void printEachCarResult(String name, int advance) {
+        System.out.print(name + " : ");
+        System.out.print("-".repeat(advance));
+        System.out.println();
+    }
+
+    public void printEnter() {
+        System.out.println();
+    }
 }
