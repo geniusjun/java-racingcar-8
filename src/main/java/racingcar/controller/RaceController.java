@@ -1,5 +1,9 @@
 package racingcar.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -15,5 +19,15 @@ public class RaceController {
 
     public void run() {
         outputView.printStart();
+        Cars cars = makeCars(inputView.readLine());
+    }
+
+    private Cars makeCars(String input) {
+        String[] names = input.split(",");
+        List<Car> cars = new ArrayList<>();
+        for (int i = 0; i < names.length; i++) {
+            cars.add(Car.from(names[i]));
+        }
+        return Cars.from(cars);
     }
 }
