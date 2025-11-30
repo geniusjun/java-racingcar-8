@@ -21,6 +21,10 @@ public class RaceController {
         outputView.printStart();
         Cars cars = makeCars(inputView.readLine());
         outputView.printAdvance();
+        int attempt = inputView.readAdvance();
+        while (attempt-- > 0) {
+
+        }
     }
 
     private Cars makeCars(String input) {
@@ -31,4 +35,5 @@ public class RaceController {
         }
         return Cars.from(cars);
     }
+
 }
