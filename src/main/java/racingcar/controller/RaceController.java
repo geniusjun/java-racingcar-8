@@ -20,6 +20,7 @@ public class RaceController {
     public void run() {
         outputView.printStart();
         Cars cars = makeCars(inputView.readLine());
+        outputView.printAdvance();
     }
 
     private Cars makeCars(String input) {
