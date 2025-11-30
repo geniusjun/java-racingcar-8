@@ -28,6 +28,7 @@ public class RaceController {
             advanceCars(cars);
             showResult(cars);
         }
+        outputView.printWinner(cars);
     }
 
     private Cars makeCars(String input) {

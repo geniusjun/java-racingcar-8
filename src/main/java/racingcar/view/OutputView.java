@@ -1,5 +1,7 @@
 package racingcar.view;
 
+import racingcar.domain.Cars;
+
 public class OutputView {
 
     public void printStart() {
@@ -22,5 +24,15 @@ public class OutputView {
 
     public void printEnter() {
         System.out.println();
+    }
+
+    public void printWinner(Cars cars) {
+        System.out.print("최종 우승자 : ");
+        for (int i = 0; i < cars.getCars().size(); i++) {
+            if (i == cars.getCars().size() - 1) {
+                System.out.print(cars.getCars().get(i).getName());
+            }
+            System.out.print(cars.getCars().get(i).getName() + ", ");
+        }
     }
 }
