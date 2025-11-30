@@ -14,6 +14,6 @@ public class RaceController {
     }
 
     public void run() {
-
+        outputView.printStart();
     }
 }
